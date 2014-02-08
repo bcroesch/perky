@@ -1,0 +1,2 @@
+class PerkSelectionsController < ApplicationController
+end

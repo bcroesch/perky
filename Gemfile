@@ -30,6 +30,9 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'rspec-rails'
   gem 'annotate'
+  gem 'pry'
+  gem 'pry-stack_explorer'
+  gem 'pry-nav'
 end
 group :test do
   gem 'capybara'

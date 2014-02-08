@@ -3,7 +3,7 @@
 # Table name: purchases
 #
 #  id         :integer          not null, primary key
-#  type       :string(255)
+#  kind       :string(255)
 #  perk_id    :integer
 #  user_id    :integer
 #  credits    :integer

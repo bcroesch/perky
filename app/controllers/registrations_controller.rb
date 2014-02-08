@@ -8,7 +8,9 @@ class RegistrationsController < Devise::RegistrationsController
 
   def build_resource(params)
     super
-    binding.pry
+    #binding.pry
+    self.resource.account = Account.new
+    self.resource
   end
 
   def sign_up_params

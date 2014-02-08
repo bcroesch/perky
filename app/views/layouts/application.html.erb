@@ -6,9 +6,15 @@
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Perky" %>">
     <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+
+    <% if params[:controller] == "registrations" || params[:controller] == "accounts" %>
+      <%= stripe_js_tag %>
+      <%= tag :meta, :name => "stripe-key", :content => ENV['STRIPE_PUBLIC_KEY'] %>
+    <% end %>
+
     <%= csrf_meta_tags %>
   </head>
-  <body>
+  <body class="<%= params[:controller].parameterize %>-controller <%=params[:action]%>-action" data-controller="<%=params[:controller].camelize%>" data-action="<%=params[:action].camelize%>">
     <header>
       <%= render 'layouts/navigation' %>
     </header>

@@ -30,7 +30,7 @@ Purchase
 
 
 Superuser:
-  -can CRUD Perks
+  -can CRUD jlkajdklfjs
 
 Admin:
   -account creator is automatically made an admin
@@ -45,7 +45,7 @@ Any User:
 Guest:
   -Sign up for account (user accepts_nested_resources_for :account - name, stripe cc info)
 
-
+   
 
 -Homejoy
 -Netflix

@@ -1,0 +1,45 @@
+<h1>Welcome people!</h1>
+  <%= form_for(account_user_path(@account, @user), method: :put, html: { class: "form-horizontal" }) do |f| %>
+    <fieldset>
+      <div class="row-fluid">
+        <div class="col-md-6">
+          <%= hidden_field_tag :token, params[:token] %>
+
+          <div class="control-group">
+            <%= f.label :first_name, class: "control-label" %>
+            <div class="controls">
+              <%= f.text_field :first_name, class: "input-xlarge" %>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <%= f.label :last_name, class: "control-label" %>
+            <div class="controls">
+              <%= f.text_field :last_name, class: "input-xlarge" %>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <%= f.label :password, class: "control-label" %>
+            <div class="controls">
+              <%= f.password_field :password, class: "input-xlarge" %>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <%= f.label :password_confirm, class: "control-label" %>
+            <div class="controls">
+              <%= f.password_field :password_confirm, class: "input-xlarge" %>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <div class="controls">
+              <%= f.submit 'Go!', class: "btn btn-primary" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  <% end %>
+

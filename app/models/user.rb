@@ -36,6 +36,8 @@ class User < ActiveRecord::Base
 
   belongs_to :account
 
+  accepts_nested_attributes_for :account
+
   def name
     [first_name, last_name].join(" ")
   end

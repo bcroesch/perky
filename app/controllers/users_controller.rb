@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, except: [:welcome]
   before_action :set_account
 
   def index
@@ -23,7 +23,6 @@ class UsersController < ApplicationController
   end
 
   def update
-    debugger
     @user = @account.users.find(params[:id])
     if @user.update(permitted_params.user)
       flash[:notice] = 'User updated successfully'
@@ -38,12 +37,20 @@ class UsersController < ApplicationController
     @user = @account.users.new(permitted_params.user)
     @user.password = SecureRandom.hex(10)
     if @user.save
+      #send the email
+      @user.reset_password_token = SecureRandom.hex(15)
+      @user.save
+      NewUserPasswordMailer.new_user(@account.id,@user.id).deliver
       redirect_to [@account, @user]
     else
       debugger
       flash[:alert] = 'Error with creation'
       render action: 'new'
     end
+  end
+
+  def welcome
+    @user = @account.users.find_by_reset_password_token(params[:token])
   end
 
   protected

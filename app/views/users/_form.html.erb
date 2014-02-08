@@ -10,16 +10,9 @@
           </div>
 
           <div class="control-group">
-            <%= f.label :first_name, class: "control-label" %>
+            <%= f.label :monthly_credits, class: "control-label" %>
             <div class="controls">
-              <%= f.text_field :first_name, class: "input-xlarge" %>
-            </div>
-          </div>
-
-          <div class="control-group">
-            <%= f.label :last_name, class: "control-label" %>
-            <div class="controls">
-              <%= f.text_field :last_name, class: "input-xlarge" %>
+              <%= f.number_field :monthly_credits, class: "input-xlarge" %>
             </div>
           </div>
 
@@ -30,6 +23,5 @@
           </div>
         </div>
       </div>
-
     </fieldset>
   <% end %>

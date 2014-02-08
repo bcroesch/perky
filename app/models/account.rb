@@ -12,6 +12,8 @@
 class Account < ActiveRecord::Base
   has_many :users
 
+  CREDIT_PRICE = 10
+
   after_create :generate_stripe_token
 
   attr_accessor :stripe_card_token
@@ -23,5 +25,15 @@ class Account < ActiveRecord::Base
   rescue Stripe::StripeError => e
     binding.pry
     logger.warn e
+  end
+
+  def self.process_monthly_stripe_charge
+    charge_amount = users.map(&:monthly_credits).compact.reduce(0){|sum, val| sum += (val * CREDIT_PRICE) }
+
+    Stripe::Charge.create(
+      amount: charge_amount * 100,
+      currency: "usd",
+      customer: stripe_customer_token
+    )
   end
 end

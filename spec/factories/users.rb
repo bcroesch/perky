@@ -15,12 +15,13 @@
 #  last_sign_in_ip        :string(255)
 #  created_at             :datetime
 #  updated_at             :datetime
-#  name                   :string(255)
 #  superuser              :boolean
 #  admin                  :boolean
 #  monthly_credits        :integer
 #  account_id             :integer
 #  adhoc_credits          :integer
+#  first_name             :string(255)
+#  last_name              :string(255)
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl

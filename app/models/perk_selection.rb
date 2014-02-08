@@ -14,7 +14,6 @@ class PerkSelection < ActiveRecord::Base
   belongs_to :perk
 
   def purchase(kind)
-    # Check against the user's credits before allowing purchase...?
     Purchase.create(kind: kind,
                     perk: self.perk,
                     user: self.user,

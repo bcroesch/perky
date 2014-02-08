@@ -2,7 +2,9 @@ class UsersController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @users = User.all
+    if current_user.admin
+      @users = current_user.account.users
+    end
   end
 
   def show

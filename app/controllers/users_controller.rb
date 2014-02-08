@@ -20,20 +20,17 @@ class UsersController < ApplicationController
 
   def create
     debugger
-    @user = @account.users.new(user_params)
+    @user = @account.users.new(permitted_params.user)
     if @user.save
       redirect_to @user
     else
+      debugger
       flash[:alert] = 'Error with creation'
       render action: 'new'
     end
   end
 
   protected
-
-  def user_params
-    params.require(:user).permit(:first_name ,:last_name, :email)
-  end
 
   def set_account
     @account = Account.find(params[:account_id])

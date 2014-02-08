@@ -11,9 +11,9 @@ class PermittedParams < Struct.new(:params, :user)
   def credit_card
     params.permit(:stripe_card_token)
   end
-  
+
   def user_attributes
-    [:email, :first_name, :last_name, :password, :password_confirmation, account_attributes: [:name]]    
+    [:email, :first_name, :last_name, :password, :password_confirmation, account_attributes: [:name]]
   end
 
   def account_attributes

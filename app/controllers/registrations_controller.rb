@@ -7,8 +7,8 @@ class RegistrationsController < Devise::RegistrationsController
   # end
 
   def build_resource(params)
-    debugger
     super
+    binding.pry
   end
 
   def sign_up_params

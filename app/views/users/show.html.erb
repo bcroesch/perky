@@ -1,3 +1,4 @@
 <h3>User</h3>
 <p>Email: <%= @user.email if @user.email %></p>
 
+<%= link_to "Edit User Information", edit_account_user_path(@account, @user) %>

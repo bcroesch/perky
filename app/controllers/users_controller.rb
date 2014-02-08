@@ -14,12 +14,26 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = @account.users.find(params[:id])
+  end
+
   def new
     @user = @account.users.new
   end
 
+  def update
+    @user = @account.users.find(params[:id])
+    if @user.update(permitted_params.user)
+      flash[:notice] = 'User updated successfully'
+      redirect_to [@account, @user]
+    else
+      flash[:alert] = 'Error with user creation'
+      render action: 'edit'
+    end
+  end
+
   def create
-    debugger
     @user = @account.users.new(permitted_params.user)
     @user.password = SecureRandom.hex(10)
     if @user.save

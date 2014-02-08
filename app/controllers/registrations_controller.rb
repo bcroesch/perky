@@ -10,6 +10,7 @@ class RegistrationsController < Devise::RegistrationsController
     super
     #binding.pry
     self.resource.account = Account.new
+    self.resource.admin = true
     self.resource
   end
 

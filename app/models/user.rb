@@ -36,4 +36,7 @@ class User < ActiveRecord::Base
 
   belongs_to :account
 
+  def name
+    [first_name, last_name].join(" ")
+  end
 end

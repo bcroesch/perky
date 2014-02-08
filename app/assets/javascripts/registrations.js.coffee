@@ -1,3 +1,3 @@
-class PLM.Registrations
+class PKY.Registrations
   init: ()->
-    PLM.CreditCardForm.init()
+    PKY.CreditCardForm.init()

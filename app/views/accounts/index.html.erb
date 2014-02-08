@@ -1,8 +1,0 @@
-<h3>Users</h3>
-<ul class="users">
-  <% @accounts.each do |account| %>
-    <li>
-      <%= link_to account.name, account %> signed up <%= account.created_at.to_date %>
-    </li>
-  <% end %>
-</ul>

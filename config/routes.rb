@@ -5,10 +5,12 @@ Perky::Application.routes.draw do
 
   resources :perks
 
-  resources :accounts
+  resources :accounts do
+    resources :users
+  end
 
   root :to => "home#index"
   devise_for :users, :controllers => {:registrations => "registrations"}
-  resources :users
+
 
 end

@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!
+  before_action :set_account
 
   def index
     if current_user.admin
@@ -14,11 +15,12 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = User.new
+    @user = @account.users.new
   end
 
   def create
-    @user = User.new(user_params)
+    debugger
+    @user = @account.users.new(user_params)
     if @user.save
       redirect_to @user
     else
@@ -31,6 +33,10 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:first_name ,:last_name, :email)
+  end
+
+  def set_account
+    @account = Account.find(params[:account_id])
   end
 
 end

@@ -1,5 +1,6 @@
 <div ng-controller="PerksCtrl">
-<div ></div>
+<div id="monthly_credits" data-monthly="<%= @current_user.monthly_credits %>"></div>
+<div id="subscriptions" data-subscriptions="<%= @subscriptions %>">
 <%= render 'remaining_points' %>
 <br />
 Here is the view that users see when choosing their perks for the month... Some JS and pretty styling needed.

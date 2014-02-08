@@ -3,5 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 @PerksCtrl = ['$scope', ($scope) ->
-  alert "hello world"
+  $scope.monthly_credits = jQuery('#monthly_credits').data('monthly')
+
+  alert $scope.monthly_credits
 ]

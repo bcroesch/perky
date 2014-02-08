@@ -1,7 +1,7 @@
 Perky::Application.routes.draw do
-  resources :purchases
+  resources :purchases, only: [:index, :create]
 
-  resources :perk_selections
+  resources :perk_selections, only: [:index, :create, :destroy]
 
   resources :perks
 

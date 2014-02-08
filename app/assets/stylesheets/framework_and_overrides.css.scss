@@ -47,10 +47,27 @@ img {
   @extend .col-md-6;
   @extend .text-center;
   }
-.submit {
+  .form-control {
+   -webkit-box-shadow: 0 0 0 white;
+   box-shadow: 0 0 0 white;
+   background-color: rgba(0,0,0,0.1);
+   border-color: white;
+   color: black;
+  }
+  .form-control:focus {
+   -webkit-box-shadow: 0 0 0 white;
+   box-shadow: 0 0 0 white;
+   border-color: $linkColor;
+  }
+.submit, .button, .authform .button{
   @extend .btn;
   @extend .btn-primary;
   @extend .btn-lg;
+  border: none;
+  background-color: $linkColor;
+  }
+.submit:hover, .button:hover, .authform .button:hover{
+  background-color: $linkHoverColor;
   }
 // apply styles to HTML elements
 // to make views framework-neutral
@@ -78,6 +95,12 @@ section {
   @extend .well;
   @extend .well-lg;
   padding-bottom: 40px;
+}
+.authform h3{
+	padding-top: 0px;
+	margin-top: 0px;
+	padding-bottom: 10px;
+	text-align: center;
 }
 .authform .right {
   float: right !important;

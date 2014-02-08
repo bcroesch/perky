@@ -1,41 +1,33 @@
 class PerkSelectionsController < ApplicationController
   before_action :set_perk_selection, only: [:destroy]
 
-  respond_to :json, only: [:destroy]
+  # respond_to :json, only: [:destroy]
 
   # GET /perk_selections
   def index
-    # USERS
+    @perk_selections = current_user.perk_selections
   end
-
-  # GET /perk_selections/new
-  # def new
-  #   # NOT AVAILABLE
-  # end
 
   # POST /perk_selections/create
   def create
-    
+    @perk_selection = PerkSelection.new(perk_selection_params)
+
+    if @perk_selection.save
+      flash[:success] = "Successfully selected this perk."
+      redirect_to perk_selections_path
+    else
+      flash[:warning] = "There was an error selecting this perk."
+      render action: "new"
+    end
+
+    redirect_to perk_selections_path
   end
-
-  # GET /perk_selections/:id
-  # def show
-  #   # NOT AVAILABLE
-  # end
-
-  # GET /perk_selections/:id/edit
-  # def edit
-  #   # NOT AVAILABLE
-  # end
-
-  # PATCH/PUT /perk_selections/:id
-  # def update
-  #   # NOT AVAILABLE
-  # end
 
   # DELETE /perk_selections/:id
   def destroy
     @perk_selection.destroy
+
+    redirect_to perk_selections_path
   end
 
   private

@@ -1,141 +1,61 @@
-Perky
-=========
+Account
+  name:string
+  stripe_customer_token:string
 
-This application was generated with the [rails_apps_composer](https://github.com/RailsApps/rails_apps_composer) gem
-provided by the [RailsApps Project](http://railsapps.github.io/).
+Users
+  superuser:boolean (can add/remove perk catalog)
+  admin:boolean (can add employees, assign credits)
+  monthly_credits:integer
+  account:references
+  adhoc_credits:integer
 
-Diagnostics
------------
+Perks
+  name:string
+  credits:integer
+  image
 
-This application was built with recipes that are known to work together.
+PerkSelections (user's selected recurring perks)
+  user:references
+  perk:references
 
-This application was built with preferences that are NOT known to work
-together.
 
-If the application doesn’t work as expected, please [report an issue](https://github.com/RailsApps/rails_apps_composer/issues)
-and include these diagnostics:
+Purchase
+  type:string (onetime|recurring)
+  perk:references
+  user:references
+  credits:integer
 
-We’d also like to know if you’ve found combinations of recipes or
-preferences that do work together.
 
-Recipes:
 
-* apps4
-* controllers
-* core
-* email
-* extras
-* frontend
-* gems
-* git
-* init
-* models
-* prelaunch
-* railsapps
-* readme
-* routes
-* saas
-* setup
-* testing
-* views
 
-Preferences:
+Superuser:
+  -can CRUD Perks
 
-* git: true
-* apps4: none
-* dev_webserver: thin
-* prod_webserver: thin
-* database: postgresql
-* templates: erb
-* unit_test: rspec
-* integration: rspec-capybara
-* continuous_testing: guard
-* fixtures: factory_girl
-* frontend: bootstrap3
-* email: smtp
-* authentication: devise
-* devise_modules: default
-* authorization: none
-* form_builder: none
-* starter_app: users_app
-* rvmrc: false
-* quiet_assets: true
-* local_env_file: foreman
-* better_errors: true
-* github: true
 
-Ruby on Rails
--------------
+Admin:
+  -account creator is automatically made an admin
+  -can index users in their account
+  -can assign credits to users on their account
+  -can assign admins
 
-This application requires:
+Any User:
+  -can CRUD their own PerkSelections, up to their monthly_credits limit
+  -can CRUD one time perk purchase
 
--   Ruby
--   Rails
 
-Learn more about [Installing Rails](http://railsapps.github.io/installing-rails.html).
 
-Database
---------
+-Homejoy
+-Netflix
+-Uber
+-Spotify
+-Dry cleaning?
+-Peapod
+-Mass transit cards
+-Gym membership
+-Grubhub
 
-This application uses PostgreSQL with ActiveRecord.
+-Starbucks
+-iTunes gift card
+-Amazon
+-Chipotle
 
-Development
------------
-
--   Template Engine: ERB
--   Testing Framework: RSpec and Factory Girl
--   Front-end Framework: Twitter Bootstrap 3.0 (Sass)
--   Form Builder: None
--   Authentication: Devise
--   Authorization: None
--   Admin: None
-
-Email
------
-
-The application is configured to send email using a SMTP account.
-
-Email delivery is disabled in development.
-
-Getting Started
----------------
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-
-Documentation and Support
--------------------------
-
-This is the only documentation.
-
-#### Issues
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-
-Similar Projects
-----------------
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-
-Contributing
-------------
-
-If you make improvements to this application, please share with others.
-
--   Fork the project on GitHub.
--   Make your feature addition or bug fix.
--   Commit with Git.
--   Send the author a pull request.
-
-If you add functionality to this application, create an alternative
-implementation, or build an application that is similar, please contact
-me and I’ll add a note to the README so that others can find your work.
-
-Credits
--------
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-
-License
--------
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.

@@ -1,0 +1,16 @@
+<div ng-controller="PerksCtrl">
+<div ></div>
+<%= render 'remaining_points' %>
+<br />
+Here is the view that users see when choosing their perks for the month... Some JS and pretty styling needed.
+<br />
+<% @perks.each do |perk| %>
+  <p>
+    This perk will cost <%= perk.id %> points => <strong><%= perk.name %></strong> => <%= perk.description || "No description..." %>
+  </p>
+<% end %>
+
+<br />
+<%= render 'selected_perks' %>
+
+</div>

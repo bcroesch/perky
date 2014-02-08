@@ -21,8 +21,9 @@ class UsersController < ApplicationController
   def create
     debugger
     @user = @account.users.new(permitted_params.user)
+    @user.password = SecureRandom.hex(10)
     if @user.save
-      redirect_to @user
+      redirect_to [@account, @user]
     else
       debugger
       flash[:alert] = 'Error with creation'

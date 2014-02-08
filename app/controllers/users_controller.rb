@@ -23,6 +23,7 @@ class UsersController < ApplicationController
   end
 
   def update
+    debugger
     @user = @account.users.find(params[:id])
     if @user.update(permitted_params.user)
       flash[:notice] = 'User updated successfully'

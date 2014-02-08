@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :authenticate_user!, except: [:welcome]
+  skip_before_filter :authenticate_user!, only: [:welcome, :set_initial_password]
   before_action :set_account
 
   def index
@@ -46,6 +46,16 @@ class UsersController < ApplicationController
       debugger
       flash[:alert] = 'Error with creation'
       render action: 'new'
+    end
+  end
+
+  def set_initial_password
+    @user = @account.users.find_by_reset_password_token(params[:token])
+    if @user.update(permitted_params.user.merge(reset_password_token: nil))
+      sign_in @user
+      redirect_to root_url, flash: {notice: 'User updated successfully'}
+    else
+      render action: 'edit', flash: {alert: 'Error with user creation'}
     end
   end
 

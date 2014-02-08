@@ -1,17 +1,16 @@
 <div ng-controller="PerksCtrl">
-<div id="monthly_credits" data-monthly="<%= @current_user.monthly_credits %>"></div>
+<div id="monthly_credits" data-monthly="<%= current_user.monthly_credits %>"></div>
 <div id="subscriptions" data-subscriptions="<%= @subscriptions %>">
 <%= render 'remaining_points' %>
 <br />
 Here is the view that users see when choosing their perks for the month... Some JS and pretty styling needed.
 <br />
+
+<div class="row">
 <% @perks.each do |perk| %>
-  <p>
-    This perk will cost <%= perk.id %> points => <strong><%= perk.name %></strong> => <%= perk.description || "No description..." %>
-  </p>
+  <div ng-style="isSelected(<%= perk.id %>)">
+    <a href="#" ng-click="selectPerk(<%= perk.id %>, <%= perk.credits %>)" data-no-turbolink>Select/Unselect Perk</a>
+    This perk will cost <%= perk.credits %> points => <strong><%= perk.name %></strong> => <%= perk.description || "No description..." %>
+  </div>
 <% end %>
-
-<br />
-<%= render 'selected_perks' %>
-
 </div>

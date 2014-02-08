@@ -5,6 +5,7 @@ class PerksController < ApplicationController
 
   # GET /perks
   def index
+    @current_user = User.first
     @perks = Perk.all 
   end
 

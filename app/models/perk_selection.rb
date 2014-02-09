@@ -29,6 +29,11 @@ class PerkSelection < ActiveRecord::Base
   end
 
   def as_json(options={})
-    super(:only => [:id, :user_id, :perk_id])
+    super(:only => [:id, :user_id],
+          :include => {:perk => {
+                          :only => [:id, :credits]
+                      }
+          }
+    )
   end
 end

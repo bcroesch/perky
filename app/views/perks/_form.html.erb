@@ -31,7 +31,7 @@
     <div class="actions">
       <%= f.submit "Submit", class: "btn btn-lg btn-primary", data: { disable_with: 'Submitting...' } %>
 
-      &nbsp; <%= link_to "Back", perks_path %>
+      &nbsp; <%= link_to "Back", perks_path, 'data-no-turbolink' => true %>
     </div>
   <% end %>
 </div>

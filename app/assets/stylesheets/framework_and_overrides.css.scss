@@ -3,6 +3,10 @@
 @import url("http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,700");
 @import "variables.css.scss";
 
+html, body{
+	height: 100%;
+}
+
 // make all images responsive by default
 img {
   @extend .img-responsive;
@@ -135,9 +139,13 @@ img {
 // to make views framework-neutral
 main {
   background: none;
-  padding-bottom: 80px;
   width: 100%;
-  margin-top: $navHeight; // accommodate the navbar
+  height: auto;
+  min-height: 100%;
+  padding-top: $navHeight;
+  box-sizing: border-box;
+  margin-bottom: -60px;
+  padding-bottom: 60px;
   }
 section {
   @extend .row;

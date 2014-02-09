@@ -3,6 +3,10 @@ footer{
 	transition: opacity .25s ease-in-out;
    -moz-transition: opacity .25s ease-in-out;
    -webkit-transition: opacity .25s ease-in-out;
+   margin: 0px;
+   height: 40px;
+   width: 100%;
+   padding-top: 1px;
 }
 
 footer:hover{

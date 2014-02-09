@@ -32,7 +32,7 @@ class Account < ActiveRecord::Base
   end
 
   def monthly_spend
-    #@monthly_spend ||= users.map(&:monthly_credits).compact.reduce(0){|sum, val| sum += (val * CREDIT_PRICE) }
+    @monthly_spend ||= users.map{|user| user.perks.map(&:credits) }.flatten.compact.reduce(0){|sum, val| sum += (val * CREDIT_PRICE) }
   end
 
   def process_monthly_stripe_charge

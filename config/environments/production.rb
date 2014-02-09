@@ -76,6 +76,14 @@ Perky::Application.configure do
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = false
 
+  config.action_mailer.smtp_settings = {
+    :authentication => :plain,
+    :address => "smtp.mailgun.org",
+    :port => 587,
+    :domain => "perky.io",
+    :user_name => "postmaster@perky.io",
+    :password => "2di6japn-sy8"
+  }
 
   # Disable automatic flushing of the log to improve performance.
   # config.autoflush_log = false

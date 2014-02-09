@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   skip_before_filter :authenticate_user!, only: [:welcome, :set_initial_password]
   before_action :set_account, except: [:update]
-  before_action :set_user, only: [:update]
+  before_action :set_user, only: [:update, :delete]
 
   respond_to :json, only: [:update, :destroy]
 

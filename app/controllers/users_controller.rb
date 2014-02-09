@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   skip_before_filter :authenticate_user!, only: [:welcome, :set_initial_password]
-  before_action :set_account, except: [:update, :delete]
-  before_action :set_user, only: [:update, :delete]
+  before_action :set_account, except: [:update, :destroy]
+  before_action :set_user, only: [:update, :destroy]
 
   respond_to :json, only: [:update, :destroy]
 
@@ -52,7 +52,6 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-
     render json: {request: 'success'}
   end
 

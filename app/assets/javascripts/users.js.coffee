@@ -28,7 +28,7 @@ app.factory "DeleteUser", [
   "DeleteUser"
   ($scope, UpdateCredits, DeleteUser) ->
     $scope.credit_price = jQuery('#credit_price').data('credit-price')
-    
+
     $scope.edit_user = (user_id) ->
       jQuery('#user_' + user_id + '_edit').hide()
       jQuery('#user_' + user_id + '_monthly_spend_span').hide()

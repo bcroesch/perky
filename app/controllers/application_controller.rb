@@ -4,6 +4,14 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_filter :authenticate_user!
 
+  def after_sign_in_path_for(user)
+    if user.admin
+      account_users_url(user.account)
+    else
+      root_url
+    end
+  end
+
   def permitted_params
     @permitted_params ||= PermittedParams.new(params, current_user)
   end

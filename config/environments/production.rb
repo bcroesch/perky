@@ -69,13 +69,22 @@ Perky::Application.configure do
   # the I18n.default_locale when a translation can not be found).
   config.i18n.fallbacks = true
 
+  ActionMailer::Base.default from: "mail@perky.io"
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify  # ActionMailer Config
-  config.action_mailer.default_url_options = { :host => 'example.com' }
+  config.action_mailer.default_url_options = { :host => 'perky.io' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = false
 
+  config.action_mailer.smtp_settings = {
+    :authentication => :plain,
+    :address => "smtp.mailgun.org",
+    :port => 587,
+    :domain => "perky.io",
+    :user_name => "postmaster@perky.io",
+    :password => "2di6japn-sy8"
+  }
 
   # Disable automatic flushing of the log to improve performance.
   # config.autoflush_log = false

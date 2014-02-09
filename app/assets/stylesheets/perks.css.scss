@@ -11,22 +11,26 @@
 
 .my-credits {
 	width: 100%;
-	height: 30px;
+	height: 50px;
 	background-color: $boxBG;
-	padding: 3px;
+	padding: 4px;
 	margin-top: 20px;
 	margin-bottom: 20px;
+
+	> .credits-remaining {
+		float: left;
+		width: 100%;
+		text-align: center;
+		padding: 10px;
+		font-size: 18px;
+	}
 
 	> .credits-used {
 		background-color: $linkColor;
 		height: 100%;
 		white-space: nowrap;
 		box-sizing: border-box;
-		padding-top: 2px;
-		> span{
-			text-align: center;
-			margin-left: 10px;
-		}
+		padding-top: 1px;
 	}
 }
 
@@ -78,7 +82,7 @@
 .perk {
 	background-color: #bce29e;
 	height: 200px;
-	margin-bottom: 4px;
+	margin-bottom: 6px;
 	background-position: center center;
 	background-size: cover;
 	position: relative;

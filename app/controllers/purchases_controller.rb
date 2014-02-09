@@ -2,7 +2,7 @@ class PurchasesController < ApplicationController
 
   # GET /purchases
   def index
-    
+    @account = current_user.account
   end
 
   # POST /purchases/create

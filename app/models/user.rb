@@ -28,6 +28,7 @@ class User < ActiveRecord::Base
   has_many :perk_selections
   has_many :purchases
   has_many :unused_credits
+  has_many :perks, through: :perk_selections
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

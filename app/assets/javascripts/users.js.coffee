@@ -42,13 +42,13 @@ app.factory "AddUser", [
     $scope.credit_price = jQuery('#credit_price').data('credit-price')
     $scope.new_row = jQuery('#template').html()
     $scope.account_id = jQuery('#account_id').data('account-id')
+    $scope.table = jQuery('#employees_table > tbody')
 
     $scope.new_employee = ->
-      jQuery('#employees_table > tbody').append('<tr>' + $('#new_user_template').html() + '</tr>')
-      $compile(jQuery('#employees_table > tbody'))($scope)
+      email = jQuery('.new_user_email').last().val()
+      monthly = jQuery('.new_user_monthly').last().val()
 
-      email = jQuery('#new_user_email').val()
-      monthly = jQuery('#new_user_monthly').val()
+      template = '<tr>' + jQuery('#employees_table > tbody').children().last().html() + '</tr>'
 
       AddUser.query
         id: $scope.account_id
@@ -56,11 +56,17 @@ app.factory "AddUser", [
         monthly_credits: monthly
       , (res) ->
         if res['request'] is 'success'
-          jQuery('#new_user_email').hide()
-          jQuery('#new_user_monthly').hide()
-          jQuery('#new_user_email_span').text(email)
-          jQuery('#new_user_spend_span').text('$' + monthly)
-          jQuery('#new_user_credits_span').text(String(parseInt(monthly) / $scope.credit_price))
+          jQuery('.new_user_email').last().hide()
+          jQuery('.new_user_monthly').last().hide()
+          jQuery('.new_user_add_btn').last().hide()
+          jQuery('.new_user_confirm_btn').last().show()
+
+          jQuery('.new_user_email_span').last().text(email)
+          jQuery('.new_user_spend_span').last().text('$' + monthly)
+          jQuery('.new_user_credits_span').last().text(String(parseInt(monthly) / $scope.credit_price))
+        
+          $scope.table.append(template)
+          $compile(jQuery('#employees_table > tbody'))($scope)
         else
           alert "We were unable to add this user."
       , () ->

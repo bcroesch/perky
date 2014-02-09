@@ -1,8 +1,19 @@
 <tr id="new_user_template">
   <td></td>
-  <td><span id="new_user_email_span"></span><input placeholder="Add Employee's Email" id="new_user_email"></td>
-  <td><span id="new_user_spend_span"></span><input placeholder="Monthly Credits" value="<%= @account.default_monthly_credits * Account::CREDIT_PRICE %>" id="new_user_monthly"></td>
-  <td><span id="new_user_credits_span"></span></td>
+  <td>
+    <span class="new_user_email_span"></span>
+    <input placeholder="Add Employee's Email" class="new_user_email">
+  </td>
+  <td>
+    <span class="new_user_spend_span"></span>
+    <input placeholder="Monthly Credits" value="<%= @account.default_monthly_credits * Account::CREDIT_PRICE %>" class="new_user_monthly">
+  </td>
+  <td>
+    <span class="new_user_credits_span"></span>
+  </td>
   <td></td>
-  <td><button ng-click="new_employee()" class="btn btn-sm btn-primary">Add Employee</button></td>
+  <td>
+    <button ng-click="new_employee()" class="btn btn-sm btn-primary new_user_add_btn">Add Employee</button>
+    <button class="btn btn-sm btn-success new_user_confirm_btn" style="display:none" disabled>Employee Added</button>
+  </td>
 </tr>

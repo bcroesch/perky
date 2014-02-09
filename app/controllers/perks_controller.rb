@@ -20,7 +20,7 @@ class PerksController < ApplicationController
     @perk = Perk.new(perk_params)
 
     if @perk.save
-      flash[:success] = "Successfully create a new perk."
+      flash[:success] = "Successfully created a new perk."
       redirect_to perks_path
     else
       flash[:warning] = "There was an error creating this perk."
@@ -43,7 +43,7 @@ class PerksController < ApplicationController
     # SUPERADMIN ONLY
 
     if @perk
-      flash[:success] = "Successfully update this perk."
+      flash[:success] = "Successfully updated this perk."
       redirect_to perks_path
     else
       flash[:warning] = "There was an error updating this perk."

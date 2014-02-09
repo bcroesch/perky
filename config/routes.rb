@@ -12,7 +12,7 @@ Perky::Application.routes.draw do
   end
 
 
-  root :to => "home#index"
+  root :to => "perks#index"
   devise_for :users, :controllers => {:registrations => "registrations"}
 
 end

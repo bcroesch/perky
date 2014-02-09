@@ -22,18 +22,31 @@ class Account < ActiveRecord::Base
     binding.pry
     customer = Stripe::Customer.create(card: stripe_card_token, description: "#{id} - #{name}")
     update_attribute(:stripe_customer_token, customer.id)
+
+    # Stripe::Charge.create(
+    #     :amount => 100,
+    #     :currency => "usd",
+    #     :customer => customer.id
+    # )
   rescue Stripe::StripeError => e
     binding.pry
     logger.warn e
   end
 
-  def self.process_monthly_stripe_charge
+  def process_monthly_stripe_charge
     charge_amount = users.map(&:monthly_credits).compact.reduce(0){|sum, val| sum += (val * CREDIT_PRICE) }
-
+    return if charge_amount == 0
+    binding.pry
     Stripe::Charge.create(
       amount: charge_amount * 100,
       currency: "usd",
       customer: stripe_customer_token
     )
+  end
+
+  def self.process_account_charges
+    all.each do |account|
+      account.process_monthly_stripe_charge
+    end
   end
 end

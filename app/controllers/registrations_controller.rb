@@ -8,8 +8,8 @@ class RegistrationsController < Devise::RegistrationsController
 
   def build_resource(params)
     super
-    #binding.pry
-    self.resource.account = Account.new
+    binding.pry
+    self.resource.account = Account.new if self.resource.account.nil?
     self.resource.admin = true
     self.resource
   end

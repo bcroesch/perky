@@ -1,4 +1,4 @@
-<%= hidden_field_tag :stripe_card_token, nil, class: "stripe-card-token" %>
+<%= hidden_field_tag "user[account_attributes][stripe_card_token]", nil, class: "stripe-card-token" %>
 
 <div class="control-group">
   <%= label_tag :card_number, "Credit Card Number", class: "control-label" %>

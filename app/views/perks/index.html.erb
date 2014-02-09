@@ -1,4 +1,6 @@
 <div ng-controller="PerksCtrl">
+<div id="user" data-user-id="<%= current_user.id %>"></div>
+<div id="prior_selections" data-prior-selections="<%= @prior_selections %>"></div>
 <div id="monthly_credits" data-monthly="<%= current_user.monthly_credits %>"></div>
 <div id="subscriptions" data-subscriptions="<%= @subscriptions %>">
 <%= render 'remaining_points' %>
@@ -11,5 +13,6 @@ Here is the view that users see when choosing their perks for the month... Some 
     This perk will cost <%= perk.credits %> points => <strong><%= perk.name %></strong> => <%= perk.description || "No description..." %>
   </div>
 <% end %>
+
 
 </div>

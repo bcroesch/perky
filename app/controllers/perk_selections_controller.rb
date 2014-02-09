@@ -1,7 +1,7 @@
 class PerkSelectionsController < ApplicationController
   before_action :set_perk_selection, only: [:destroy]
 
-  # respond_to :json, only: [:destroy]
+  respond_to :json, only: [:create, :destroy]
 
   # GET /perk_selections
   def index
@@ -13,21 +13,18 @@ class PerkSelectionsController < ApplicationController
     @perk_selection = PerkSelection.new(perk_selection_params)
 
     if @perk_selection.save
-      flash[:success] = "Successfully selected this perk."
-      redirect_to perk_selections_path
+      render json: {request: 'success',
+                    perk_selection_id: @perk_selection.id}
     else
-      flash[:warning] = "There was an error selecting this perk."
-      render action: "new"
+      render json: {request: 'failed'}
     end
-
-    redirect_to perk_selections_path
   end
 
   # DELETE /perk_selections/:id
   def destroy
     @perk_selection.destroy
 
-    redirect_to perk_selections_path
+    render json: {request: 'success'}
   end
 
   private

@@ -1,7 +1,8 @@
 <%= render 'layouts/hero' %>
 <div class="row box pad centerText">
 
-<h2><%= @account.monthly_spend %> granted to <%= @account.users.count %> employees</h2>
+<h2>$<%= @account.total_monthly_allocation %> granted to <%= @account.users.count %> employees</h2>
+<!-- <h3>Employees have allocated $<%= @account.monthly_spend %></h3> -->
 
 </div>
 <div ng-controller="UsersTableCtrl" class="row box">

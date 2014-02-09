@@ -12,7 +12,7 @@
 class Account < ActiveRecord::Base
   has_many :users
 
-  CREDIT_PRICE = 10
+  CREDIT_PRICE = 5
 
   after_create :generate_stripe_token
 
@@ -29,6 +29,10 @@ class Account < ActiveRecord::Base
     # )
   rescue Stripe::StripeError => e
     logger.warn e
+  end
+
+  def total_monthly_allocation
+    @total_monthly_allocation ||= users.map(&:monthly_credits).compact.reduce(0){|sum, val| sum += (val * CREDIT_PRICE) }
   end
 
   def monthly_spend

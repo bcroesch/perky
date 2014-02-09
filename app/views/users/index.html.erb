@@ -1,15 +1,17 @@
 <h3>Employees</h3>
 <div class="users">
   <div class="row">
-    <div class="col-md-4">Name</div>
-    <div class="col-md-4">Email</div>
-    <div class="col-md-4">Monthly Credits</div>
+    <div class="col-md-3">Name</div>
+    <div class="col-md-3">Email</div>
+    <div class="col-md-3">Monthly Credits</div>
+    <div class="col-md-3">&nbsp;</div>
   </div>
   <% @users.each do |user| %>
     <div class="row">
-      <div class="col-md-4"><%= user.name %></div>
-      <div class="col-md-4"><%= user.email %></div>
-      <div class="col-md-4"><%= user.monthly_credits %></div>
+      <div class="col-md-3"><%= user.name %></div>
+      <div class="col-md-3"><%= user.email %></div>
+      <div class="col-md-3"><%= user.monthly_credits %></div>
+      <div class="col-md-3"><%= link_to "Edit", edit_account_user_url(@account, user) %></div>
     </div>
   <% end %>
 </div>

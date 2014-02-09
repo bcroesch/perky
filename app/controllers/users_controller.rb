@@ -20,6 +20,7 @@ class UsersController < ApplicationController
 
   def new
     @user = @account.users.new
+    @user.monthly_credits = @account.default_monthly_credits
   end
 
   def update
@@ -41,7 +42,7 @@ class UsersController < ApplicationController
       @user.reset_password_token = SecureRandom.hex(15)
       @user.save
       NewUserPasswordMailer.new_user(@account.id,@user.id).deliver
-      redirect_to [@account, @user]
+      redirect_to account_users_url(@account)
     else
       flash[:alert] = 'Error with creation'
       render action: 'new'

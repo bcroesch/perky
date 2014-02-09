@@ -86,7 +86,7 @@ app.factory "CancelSelection", [
           found = true
 
       if found is true
-        return {color: "green"}
+        return "selected"
       else
-        return {color: "red"}
+        return ""
 ]

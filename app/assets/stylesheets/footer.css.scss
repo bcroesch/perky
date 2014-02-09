@@ -1,0 +1,10 @@
+footer{
+	opacity: 0.2;
+	transition: opacity .25s ease-in-out;
+   -moz-transition: opacity .25s ease-in-out;
+   -webkit-transition: opacity .25s ease-in-out;
+}
+
+footer:hover{
+	opacity: 1;
+}

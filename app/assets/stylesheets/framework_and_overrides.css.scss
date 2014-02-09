@@ -29,6 +29,22 @@ img {
 	margin-top: 20px;
 }
 
+.pad{
+	padding: 20px;
+}
+
+.pad > *{
+	margin: 0px;
+}
+
+.centerText{
+	text-align: center;
+}
+
+.lightText{
+	color: $lightText;
+}
+
 .table{
 	margin-bottom: 0px;
 }
@@ -48,11 +64,12 @@ img {
 }
 
 .jumbotron{
-	padding: 40px;
 	background-color: $boxBG;
 	margin: 0px;
-	margin-top: 20px;
 	height: 200px;
+	width: 100%;
+	padding: 40px;
+	white-space: nowrap;
 	position: relative;
 }
 
@@ -65,15 +82,13 @@ img {
 	background-repeat: no-repeat;
 	background-size: contain;
 	background-position: center center;
-	margin: 0px;
-	min-width: 300px
+	min-width: 300px;
 }
 
 .heroTitle{
-	height: 100%;
-	margin: 0px;
+	position: absolute;
+	top: 40px;
 	text-align: center;
-	line-height: 0;
 }
 
 // THESE ARE EXAMPLES YOU CAN MODIFY

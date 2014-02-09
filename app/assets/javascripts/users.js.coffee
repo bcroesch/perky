@@ -37,7 +37,7 @@ app.factory "DeleteUser", [
 
     $scope.update_user = (user_id) ->
       monthly_spend = parseInt jQuery('#user_' + user_id + '_monthly_spend_input').val()
-      monthly_credits = $scope.credit_price * monthly_spend
+      monthly_credits = monthly_spend / $scope.credit_price
 
       UpdateCredits.query
         id: user_id

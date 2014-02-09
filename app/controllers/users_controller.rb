@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   skip_before_filter :authenticate_user!, only: [:welcome, :set_initial_password]
-  before_action :set_account, except: [:update, :destroy, :invite]
+  before_action :set_account, except: [:update, :destroy]
   before_action :set_user, only: [:update, :destroy]
 
   respond_to :json, only: [:update, :destroy]
@@ -43,7 +43,11 @@ class UsersController < ApplicationController
       @user.reset_password_token = SecureRandom.hex(15)
       @user.save
       NewUserPasswordMailer.new_user(@account.id,@user.id).deliver
-      redirect_to account_users_url(@account)
+      respond_to do |format|
+        format.html { redirect_to account_users_url(@account) }
+        format.json { render :json => {} }
+      end
+      
     else
       flash[:alert] = 'Error with creation'
       render action: 'new'
@@ -67,10 +71,6 @@ class UsersController < ApplicationController
 
   def welcome
     @user = @account.users.find_by_reset_password_token(params[:token])
-  end
-
-  def invite
-    # Create a new user and email them...
   end
 
   protected

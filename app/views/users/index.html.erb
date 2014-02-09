@@ -5,7 +5,7 @@
 </div>
 <div id="credit_price" data-credit-price="<%= Account::CREDIT_PRICE %>"></div>
 <div ng-controller="UsersCtrl" class="row box">
-  <div id="table-data" data-account-id="<%= @account.id %>"></div>
+  <div id="account_id" data-account-id="<%= @account.id %>"></div>
   <table class="table table-striped" id="employees_table">
     <thead>
       <tr>
@@ -24,7 +24,7 @@
 </table>
 </div>
 
-<% if false %>
+<% if true %>
   <div>
     <%= link_to 'Add new user', new_account_user_path %>
   </div>

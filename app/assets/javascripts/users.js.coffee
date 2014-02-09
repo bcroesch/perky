@@ -25,7 +25,7 @@ app.factory "DeleteUser", [
 app.factory "AddUser", [
   "$resource"
   ($resource) ->
-    return $resource("/users/invite", {id: "@id"},
+    return $resource("/accounts/:id/users", {id: "@id"},
       query:
         method: "POST"
         isArray: false
@@ -36,15 +36,25 @@ app.factory "AddUser", [
   "$scope"
   "UpdateCredits"
   "DeleteUser"
-  ($scope, UpdateCredits, DeleteUser) ->
+  "AddUser"
+  ($scope, UpdateCredits, DeleteUser, AddUser) ->
     $scope.credit_price = jQuery('#credit_price').data('credit-price')
     $scope.new_row = jQuery('#template').html()
+    $scope.account_id = jQuery('#account_id').data('account-id')
 
     $scope.new_employee = ->
-      alert 'yo'
-      $('#employee > tbody:last').append($scope.new_row)
+      jQuery('#employees_table > tbody').append('<tr>' + $('#new_user_template').html() + '</tr>')
+      
 
-
+      # AddUser.query
+      #   email: 'random@mail.com'
+      # , (res) ->
+      #   if res['request'] is 'success'
+      #     alert "Success!"
+      #   else
+      #     alert "We were unable to add this user."
+      # , () ->
+      #   alert "We encountered an error while trying to add this user."
 
     $scope.edit_user = (user_id) ->
       jQuery('#user_' + user_id + '_edit').hide()

@@ -16,8 +16,6 @@ class ApplicationController < ActionController::Base
     @permitted_params ||= PermittedParams.new(params, current_user)
   end
 
-  def debugger
-    binding.pry
-  end
+  debugger = binding.pry
 
 end

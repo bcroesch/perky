@@ -1,0 +1,43 @@
+<form id="email-intake" method="post" action="/email_leads">
+  <div class="form-group">
+    <label for="email_leads_email">Email address</label>
+    <input type="email" class="form-control" id="email_leads_email" placeholder="Email">
+  </div>
+  <div class="form-group">
+    <label for="email_leads_company_name">Company Name</label>
+    <input type="text" class="form-control" id="email_leads_company_name" placeholder="Company Name">
+  </div>
+  <div class="form-group">
+    <label for="email_leads_company_size">Company Name</label>
+    <input type="text" class="form-control" id="email_leads_company_size" placeholder="Number of Employees">
+  </div>
+  <button id="notify-button" type="submit" class="btn btn-default">Notify Me</button>
+</form>
+
+<script type="text/javascript">
+  $("#email-intake").submit(function(e) {
+    e.preventDefault();
+    var data = {};
+    data['email_leads_email'] = $("#email_leads_email").val();
+    data['email_leads_company_name'] = $("#email_leads_company_names").val();
+    data['email_leads_company_size'] = $("#email_leads_company_size").val();
+    var url = "/email_leads";
+    $.ajax({
+      type: "POST",
+      beforeSend: function(xhr) {
+        var token = $('meta[name="csrf-token"]').attr('content');
+        if (token) xhr.setRequestHeader('X-CSRF-Token', token);
+      },
+      url: url,
+      data: data,
+      success: function() {
+        $("#email_leads_email").text('');
+        $("#email_leads_company_names").text('');
+        $("#email_leads_company_size").text('');
+        alert('Thanks for your email baby!');
+      }
+    });
+
+  });
+
+</script>

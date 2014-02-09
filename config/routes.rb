@@ -1,9 +1,13 @@
 Perky::Application.routes.draw do
+  resources :email_leads
+
   resources :purchases, only: [:index, :create]
 
   resources :perk_selections, only: [:index, :create, :destroy]
 
   resources :perks
+
+  resources :email_leads, only: [:create]
 
   resources :accounts do
     resources :users

@@ -4,7 +4,7 @@
     <td><%= user.email %></td>
     <td id="user_<%= user.id %>_spend">
       <span id="user_<%= user.id %>_monthly_spend_span">
-        $<span id="user_<%= user.id %>_spend"><%= user.monthly_credits / Account::CREDIT_PRICE %></span>
+        $<span id="user_<%= user.id %>_spend"><% if !user.monthly_credits.nil? %><%= user.monthly_credits / Account::CREDIT_PRICE %><% else %>0<% end %></span>
       </span>
       <input type="text" id="user_<%= user.id %>_monthly_spend_input" placeholder="Monthly Spend (in $)" style="display: none" ng-model="user_<%= user.id %>_spend">
     </td>

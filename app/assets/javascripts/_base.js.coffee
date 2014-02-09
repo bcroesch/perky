@@ -12,6 +12,14 @@
   $httpProvider.defaults.headers.common["X-CSRF-TOKEN"] = authToken
   
 
+$ -> # Only runs for fresh/non-Turbolinked requests
+  # Fades out any dismissable alert
+  flashCallback = ->
+    $(".alert-dismissable").fadeOut 2500
+
+  setTimeout flashCallback, 2500
+  
+
 $(document).on "page:change", -> # Turbolinks => the page has been parsed and changed to the new version and on DOMContentLoaded
   if window._gaq?
     _gaq.push ["_trackPageview"]

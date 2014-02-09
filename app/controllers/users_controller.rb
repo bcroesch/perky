@@ -43,7 +43,6 @@ class UsersController < ApplicationController
       NewUserPasswordMailer.new_user(@account.id,@user.id).deliver
       redirect_to [@account, @user]
     else
-      debugger
       flash[:alert] = 'Error with creation'
       render action: 'new'
     end

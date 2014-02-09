@@ -49,7 +49,10 @@ class UsersController < ApplicationController
         format.html { redirect_to account_users_url(@account) }
         format.json { 
           account_total = @user.account.total_monthly_allocation
-          render :json => {request: 'success', account_total: account_total} 
+          render :json => {request: 'success',
+                           account_total: account_total,
+                           employee_total: @user.account.users.count
+                          } 
         }
       end
       
@@ -62,8 +65,11 @@ class UsersController < ApplicationController
   def destroy
     account = @user.account
     @user.destroy
-    
-    render json: {request: 'success', account_total: account.total_monthly_allocation}
+
+    render json: {request: 'success',
+                  account_total: account.total_monthly_allocation,
+                  employee_total: account.users.count
+                 }
   end
 
   def set_initial_password

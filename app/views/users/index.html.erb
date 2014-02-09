@@ -1,6 +1,6 @@
 <%= render 'layouts/hero', hero_text: "Employees" %>
 <div class="row box pad centerText">
-  <h2>$<span id="account_total"><%= @account.total_monthly_allocation %></span> granted to <%= @account.users.count %> employees</h2>
+  <h2>$<span id="account_total"><%= @account.total_monthly_allocation %></span> granted to <span id="employee_total"><%= @account.users.count %></span> employees</h2>
   <!-- <h3>Employees have allocated $<%= @account.monthly_spend %></h3> -->
 </div>
 <div id="credit_price" data-credit-price="<%= Account::CREDIT_PRICE %>"></div>

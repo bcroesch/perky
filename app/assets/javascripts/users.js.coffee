@@ -57,6 +57,7 @@ app.factory "AddUser", [
       , (res) ->
         if res['request'] is 'success'
           jQuery('#account_total').text(String(res['account_total']))
+          jQuery('#employee_total').text(String(res['employee_total']))
 
           jQuery('.new_user_email').last().hide()
           jQuery('.new_user_monthly').last().hide()
@@ -108,6 +109,7 @@ app.factory "AddUser", [
       , (res) ->
         if res['request'] is 'success'
           jQuery('#account_total').text(String(res['account_total']))
+          jQuery('#employee_total').text(String(res['employee_total']))
           jQuery('#user_' + user_id + '_row').remove()
         else
           alert "We were unable to delete this user."

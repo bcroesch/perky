@@ -77,7 +77,6 @@ app.factory "CancelSelection", [
             alert "We encountered an error while trying to select your perk."
         else
 
-
       $scope.isSaving = false
 
     $scope.isSelected = (perk_id, credits) ->

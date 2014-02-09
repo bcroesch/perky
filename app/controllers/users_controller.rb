@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   skip_before_filter :authenticate_user!, only: [:welcome, :set_initial_password]
-  before_action :set_account
+  before_action :set_account, except: [:update, :destroy, :invite]
+  before_action :set_user, only: [:update, :destroy]
 
   respond_to :json, only: [:update, :destroy]
 
@@ -26,9 +27,9 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = @account.users.find(params[:id])
     if @user.update(permitted_params.user)
-      render json: {request: 'success'}
+      account_total = @user.account.total_monthly_allocation
+      render json: {request: 'success', account_total: account_total}
     else
       render json: {request: 'failed'}
     end
@@ -51,7 +52,6 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-
     render json: {request: 'success'}
   end
 
@@ -69,10 +69,18 @@ class UsersController < ApplicationController
     @user = @account.users.find_by_reset_password_token(params[:token])
   end
 
+  def invite
+    # Create a new user and email them...
+  end
+
   protected
 
   def set_account
-    @account = Account.find(params[:account_id])
+    @account = Account.find(params[:account_id]) unless params[:account_id].blank?
+  end
+
+  def set_user
+    @user = User.find(params[:id])
   end
 
 end

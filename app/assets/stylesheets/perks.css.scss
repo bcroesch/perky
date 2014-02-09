@@ -71,10 +71,6 @@
 	-ms-user-select: none;      /* IE 10+ */
 }
 
-.perkLink:hover{
-	cursor: pointer;
-}
-
 .perk {
 	background-color: #bce29e;
 	height: 200px;
@@ -85,6 +81,10 @@
 	box-shadow: inset 0px -120px 100px -100px black;
 	border: 1px inset rgba(black,0.2);
 	
+	&:hover{
+		cursor: pointer;
+	}
+	
 	&:hover:before{
 		opacity: 1;
 		position: absolute;
@@ -94,6 +94,11 @@
 		left: 0;
 		background-color: rgba(white,0.2);
 		content: ' ';
+	}
+	
+	&.unaffordable{
+		opacity: 0.4;
+		pointer-events: none;
 	}
 	
 	&.selected:before{

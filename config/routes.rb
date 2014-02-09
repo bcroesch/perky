@@ -7,7 +7,8 @@ Perky::Application.routes.draw do
 
   resources :accounts do
     resources :users
-    get '/user/welcome/:token' => 'users#welcome', as: 'asdfnew_user_welcome'
+    get '/user/welcome/:token' => 'users#welcome', as: 'new_user_welcome'
+    patch '/user/welcome' => 'users#set_initial_password', as: 'user_welcome'
   end
 
 

@@ -27,4 +27,8 @@ class PerkSelection < ActiveRecord::Base
   def one_time
     purchase('onetime')
   end
+
+  def as_json(options={})
+    super(:only => [:id, :user_id, :perk_id])
+  end
 end

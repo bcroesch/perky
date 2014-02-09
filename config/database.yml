@@ -18,7 +18,7 @@ development:
   encoding: unicode
   database: perky_development
   pool:     5
-  username: perky
+  username: <%= ENV['PSQL_USERNAME'] %>
   password:
   template: template0
 
@@ -46,7 +46,7 @@ test:
   encoding: unicode
   database: perky_test
   pool:     5
-  username: perky
+  username: <%= ENV['PSQL_USERNAME'] %>
   password:
   template: template0
 

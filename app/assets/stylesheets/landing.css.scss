@@ -12,3 +12,35 @@
 .landHeader nav{
 	background-color: transparent !important;
 }
+
+.landingContent{
+	background-color: white;
+	padding: 10px;
+	padding-bottom: 20px;
+	padding-left: 40px;
+	padding-right: 40px;
+}
+
+.landingContent h1{
+	font-size: 36pt;
+}
+
+.landingContent .row{
+	margin-bottom: 40px;
+}
+
+.red{
+	background-color: red;
+}
+
+.leftText{
+	text-align: left;
+}
+
+.landingImg{
+	border: 1px inset rgba(black,0.2);
+}
+
+.sideText p{
+	font-size: 18pt;
+}

@@ -22,7 +22,6 @@ app.factory "CancelSelection", [
     )
 ]
 
-
 @PerksCtrl = [
   "$scope",
   "MakeSelection"

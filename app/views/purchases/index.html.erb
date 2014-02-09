@@ -1,0 +1,24 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>User Email</th>
+      <th>Perk</th>
+      <th>Purchased?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% index = 1 %>
+    <% @account.users.each do |us| %>
+      <% us.perks.each do |p| %>
+      <tr>
+        <td><%= index %></td>
+        <td<%= us.email %>></td>
+        <td><%= p.name %></td>
+        <td>Purchase Button</td>
+        <% index = index + 1 %>
+      </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

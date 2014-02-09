@@ -1,16 +1,29 @@
 // Place all the styles related to the Perks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "variables.css.scss";
+
+.tokenBar{
+	margin-left: -15px;
+	margin-right: -15px;
+}
+
 .my-credits {
 	width: 100%;
 	height: 30px;
-	background-color: #fff;
-	border: 1px solid #000;
+	background-color: $boxBG;
 	padding: 3px;
+	margin-top: 20px;
+	margin-bottom: 20px;
 
 	> .credits-used {
-		background-color: #f00;
+		background-color: $linkColor;
 		height: 100%;
+		white-space: nowrap;
+		padding-top: 2px;
+		padding-left: 10px;
+		box-sizing: border-box;
 	}
 }
 
@@ -21,13 +34,86 @@
 	}
 }
 
+.perkInfoName{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	margin: 10px;
+	margin-bottom: 12px;
+	font-size: 14pt;
+	line-height: 1;
+	pointer-events: none;
+	color: white;
+	-webkit-user-select: none;  /* Chrome all / Safari all */
+	-moz-user-select: none;     /* Firefox all */
+	-ms-user-select: none;      /* IE 10+ */
+}
+
+.perkInfoCredits{
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	margin: 10px;
+	font-size: 24pt;
+	line-height: 1;
+	pointer-events: none;
+	color: white;
+	-webkit-user-select: none;  /* Chrome all / Safari all */
+	-moz-user-select: none;     /* Firefox all */
+	-ms-user-select: none;      /* IE 10+ */
+}
+
+.perkLink:hover{
+	cursor: pointer;
+}
+
 .perk {
 	background-color: #bce29e;
 	height: 200px;
-	border: solid 2px transparent;
 	margin-bottom: 4px;
-
-	&.selected {
-		border-color: #86C351;
+	background-position: center center;
+	background-size: cover;
+	position: relative;
+	box-shadow: inset 0px -120px 100px -100px black;
+	
+	&:hover:before{
+		opacity: 1;
+		position: absolute;
+		height: 100%;
+		width: 100%;
+		top: 0;
+		left: 0;
+		background-color: rgba(white,0.2);
+		content: ' ';
+	}
+	
+	&.selected:before{
+		opacity: 1;
+		position: absolute;
+		height: 100%;
+		width: 100%;
+		top: 0;
+		left: 0;
+		background-color: rgba(0,0,0,0.5);
+		content: ' ';
+	}
+	
+	&.selected:after{
+		border-radius: 30px;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		height: 60px;
+		width: 60px;
+		margin-top: -30px;
+		margin-left: -30px;
+		box-sizing: border-box;
+		padding-top: 0px;
+		padding-left: 5px;
+		line-height: 1;
+		font-size: 40pt;
+		color: white;
+		border: 4px solid white;
+		content: '\2713';
 	}
 }

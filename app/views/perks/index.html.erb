@@ -1,20 +1,19 @@
 <%= render 'layouts/hero' %>
-<div ng-controller="PerksCtrl">
+<div ng-controller="PerksCtrl" class="tokenBar">
 <div id="user" data-user-id="<%= current_user.id %>"></div>
 <div id="prior_selections" data-prior-selections="<%= @prior_selections %>"></div>
 <div id="monthly_credits" data-monthly="<%= current_user.monthly_credits %>"></div>
-<div id="subscriptions" data-subscriptions="<%= @subscriptions %>">
-<%= render 'remaining_points' %>
+	<%= render 'remaining_points' %>
+</div>
 
 <div class="row">
 	<% @perks.each do |perk| %>
 	  <div class="col-md-4 perk-col">
-	  	<a href="#" ng-click="selectPerk(<%= perk.id %>, <%= perk.credits %>)" data-no-turbolink>
-		  	<div class="perk" ng-class="isSelected(<%= perk.id %>)">
-		  		<strong><%= perk.name %></strong>
-		  		<%= perk.description || "No description..." %>
-		    	<%= perk.credits %>
-		    	<%= image_tag perk.image %>
+	  	<a ng-click="selectPerk(<%= perk.id %>, <%= perk.credits %>)" class="perkLink" data-no-turbolink>
+		  	<div class="perk" ng-class="isSelected(<%= perk.id %>)" style="background-image:url('<%= perk.image %>');">
+		  		<div class="perkInfoName"><%= perk.name %></div>
+		    	<div class="perkInfoCredits"><%= perk.credits %></div>
+		  		<!-- perk.description || "No description..." -->
 		  	</div>
 	  	</a>
 	  </div>

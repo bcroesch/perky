@@ -25,7 +25,7 @@ app.factory "DeleteUser", [
 app.factory "AddUser", [
   "$resource"
   ($resource) ->
-    return $resource("/accounts/:id/users", {id: "@id"},
+    return $resource("/accounts/:id/users.json", {id: "@id"},
       query:
         method: "POST"
         isArray: false
@@ -44,17 +44,20 @@ app.factory "AddUser", [
 
     $scope.new_employee = ->
       jQuery('#employees_table > tbody').append('<tr>' + $('#new_user_template').html() + '</tr>')
-      
+      email = jQuery('#new_user_email').val()
+      monthly = jQuery('#new_user_monthly').val()
 
-      # AddUser.query
-      #   email: 'random@mail.com'
-      # , (res) ->
-      #   if res['request'] is 'success'
-      #     alert "Success!"
-      #   else
-      #     alert "We were unable to add this user."
-      # , () ->
-      #   alert "We encountered an error while trying to add this user."
+      AddUser.query
+        id: $scope.account_id
+        email: email
+        monthly_credits: monthly
+      , (res) ->
+        if res['request'] is 'success'
+          alert "Success!"
+        else
+          alert "We were unable to add this user."
+      , () ->
+        alert "We encountered an error while trying to add this user."
 
     $scope.edit_user = (user_id) ->
       jQuery('#user_' + user_id + '_edit').hide()

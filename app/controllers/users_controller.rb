@@ -43,9 +43,10 @@ class UsersController < ApplicationController
       @user.reset_password_token = SecureRandom.hex(15)
       @user.save
       NewUserPasswordMailer.new_user(@account.id,@user.id).deliver
+      
       respond_to do |format|
         format.html { redirect_to account_users_url(@account) }
-        format.json { render :json => {} }
+        format.json { render :json => {request: 'success'} }
       end
       
     else

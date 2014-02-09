@@ -1,7 +1,7 @@
 <tr id="new_user_template">
   <td></td>
-  <td><input placeholder="Add Employee's Email"></td>
-  <td><input placeholder="Monthly Credits" value="<%= @account.default_monthly_credits * Account::CREDIT_PRICE %>"></td>
+  <td><input placeholder="Add Employee's Email" id="new_user_email"></td>
+  <td><input placeholder="Monthly Credits" value="<%= @account.default_monthly_credits * Account::CREDIT_PRICE %>" id="new_user_monthly"></td>
   <td></td>
   <td></td>
   <td><button ng-click="new_employee()" class="btn btn-sm btn-primary">Add Employee</button></td>

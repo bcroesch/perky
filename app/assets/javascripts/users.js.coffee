@@ -34,16 +34,19 @@ app.factory "AddUser", [
 
 @UsersCtrl = [
   "$scope"
+  "$compile"
   "UpdateCredits"
   "DeleteUser"
   "AddUser"
-  ($scope, UpdateCredits, DeleteUser, AddUser) ->
+  ($scope, $compile, UpdateCredits, DeleteUser, AddUser) ->
     $scope.credit_price = jQuery('#credit_price').data('credit-price')
     $scope.new_row = jQuery('#template').html()
     $scope.account_id = jQuery('#account_id').data('account-id')
 
     $scope.new_employee = ->
       jQuery('#employees_table > tbody').append('<tr>' + $('#new_user_template').html() + '</tr>')
+      $compile(jQuery('#employees_table > tbody'))($scope)
+
       email = jQuery('#new_user_email').val()
       monthly = jQuery('#new_user_monthly').val()
 
@@ -53,7 +56,11 @@ app.factory "AddUser", [
         monthly_credits: monthly
       , (res) ->
         if res['request'] is 'success'
-          alert "Success!"
+          jQuery('#new_user_email').hide()
+          jQuery('#new_user_monthly').hide()
+          jQuery('#new_user_email_span').text(email)
+          jQuery('#new_user_spend_span').text('$' + monthly)
+          jQuery('#new_user_credits_span').text(String(parseInt(monthly) / $scope.credit_price))
         else
           alert "We were unable to add this user."
       , () ->

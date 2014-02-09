@@ -1,0 +1,9 @@
+<% @users.each do |user| %>
+  <tr>
+    <td><%= user.name %></td>
+      <td><%= user.email %></td>
+      <td><span class="userCreditChange" data-user-id="<%= user.id %>" inline-edit=""><%= user.monthly_credits %></span></td>
+      <td><%= link_to "Edit", edit_account_user_url(@account, user) %></td>
+  </tr>
+<% end %>
+

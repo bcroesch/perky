@@ -1,8 +1,9 @@
 <%= render 'layouts/hero' %>
 <div class="row box pad centerText">
-	<h2>$2000 Granted to 48 Employees</h2>
+  <h2>$2000 Granted to 48 Employees</h2>
 </div>
-<div class="row box">
+<div ng-controller="UsersTableCtrl" class="row box">
+  <div id="table-data" data-account-id="<%= @account.id %>"></div>
   <table class="table table-striped">
     <thead>
       <tr>
@@ -13,14 +14,8 @@
       </tr>
     </thead>
     <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.name %></td>
-          <td><%= user.email %></td>
-          <td><%= user.monthly_credits %></td>
-          <td><%= link_to "Edit", edit_account_user_url(@account, user) %></td>
-      </tr>
-      <% end %>
+    <%= render 'users_table' %>
+    <%= render 'users_table_angular' %>
     </tbody>
 </table>
 </div>

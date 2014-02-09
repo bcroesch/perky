@@ -1,4 +1,5 @@
 class EmailLeadsController < ApplicationController
+  skip_before_filter :authenticate_user!, only: [:create]
   before_action :set_email_lead, only: [:show, :edit, :update, :destroy]
 
   # GET /email_leads
@@ -24,17 +25,19 @@ class EmailLeadsController < ApplicationController
   # POST /email_leads
   # POST /email_leads.json
   def create
-    debugger
-    @email_lead = EmailLead.new(email_lead_params)
+    @email_lead = EmailLead.new
+    @email_lead.email = params[:email_leads_email]
+    @email_lead.company_name = params[:email_leads_company_name]
+    @email_lead.company_size = params[:email_leads_company_size]
 
-    respond_to do |format|
-      if @email_lead.save
-        format.html { redirect_to @email_lead, notice: 'Email lead was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @email_lead }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @email_lead.errors, status: :unprocessable_entity }
-      end
+    if @email_lead.save
+      data = {}
+      data['success'] = true
+      render json: data
+    else
+      data = {}
+      data['success'] = false
+      render json: data
     end
   end
 

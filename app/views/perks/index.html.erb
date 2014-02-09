@@ -8,7 +8,7 @@
 	<div class="row perkCatalog">
 		<% @perks.each do |perk| %>
 		  <div class="col-md-4 perk-col">
-		  	<a href="#" ng-click="selectPerk(<%= perk.id %>, <%= perk.credits %>)" class="perkLink" data-no-turbolink>
+		  	<a ng-click="selectPerk(<%= perk.id %>, <%= perk.credits %>)" class="perkLink" data-no-turbolink>
 			  	<div class="perk" ng-class="isSelected(<%= perk.id %>)" style="background-image:url('<%= perk.image %>');">
 			  		<div class="perkInfoName"><%= perk.name %></div>
 			    	<div class="perkInfoCredits"><%= perk.credits %></div>

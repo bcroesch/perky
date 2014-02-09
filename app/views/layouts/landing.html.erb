@@ -24,12 +24,13 @@
   <body class="<%= params[:controller].parameterize %>-controller <%=params[:action]%>-action" data-controller="<%=params[:controller].camelize%>" data-action="<%=params[:action].camelize%>" ng-app="Perky">
     <header class="landHeader">
       <%= render 'layouts/navigation' %>
+	  <a href="#myAnchor" class="anchorLink" href="#myAnchor" rel="" id="anchor1"><button type="button" class="btn btn-landing">Get Started ></button></a>
     </header>
     <%= render 'layouts/messages' %>
     <div class="container">
       <div class="row centerText landingContent">
         <div class="row">
-          <h1><i>Employee Perks Done Right</i></h1>
+          <h1><i>Offer Your Employees Fun and Unique Perks</i></h1>
           <hr><br>
           <div class="col-md-7 pull-left">
             <%= image_tag "landing1.png" %>
@@ -37,34 +38,81 @@
           <div class="col-md-5 leftText sideText pull-right">
             <br><br>
             <h1>Simple</h1>
-            <p>Enroll your employees once, and Perky takes care of the rest.</p>
+            <p>
+              Enroll your employees, select your per-employee monthly budget, and Perky takes care of the rest.
+            </p>
           </div>
         </div>
         <hr><br>
         <div class="row">
-          <div class="col-md-7 pull-right">
-            <%= image_tag "landing2.png" %>
+          <div class="col-md-7 pull-right" >
+            <div class="carousel slide" data-ride="carousel">
+              <div class="carousel-inner">
+                <div class="item active">
+                  <%= image_tag 'homejoy.png'%>
+                  <div class="carousel-caption">
+                    Home Cleaning Services
+                  </div>
+                </div>
+                <div class="item">
+                  <%= image_tag 'netflix.png'%>
+                  <div class="carousel-caption">
+                    Netflix Membership
+                  </div>
+                </div>
+                <div class="item">
+                  <%= image_tag 'seamless.png'%>
+                  <div class="carousel-caption">
+                    Restaurant Take-Out and Delivery Credits
+                  </div>
+                </div>
+                <div class="item">
+                  <%= image_tag 'sittercity.png' %>
+                  <div class="carousel-caption">
+                    Babysitting Services
+                  </div>
+                </div>
+                <div class="item">
+                  <%= image_tag 'dryv.png' %>
+                  <div class="carousel-caption">
+                    Dry-Cleaning & Laundry Services
+                  </div>
+                </div>
+                <div class="item">
+                  <%= image_tag 'divvy.png' %>
+                  <div class="carousel-caption">
+                    Shared Bike Access
+                  </div>
+                </div>
+                <div class="item">
+                  <%= image_tag 'uber.png' %>
+                  <div class="carousel-caption">
+                    On-Demand Personal Driver Services
+                  </div>
+                </div>
+                <div class="item">
+                  <%= image_tag 'match.png' %>
+                  <div class="carousel-caption">
+                    Dating Website Membership
+                  </div>
+                </div>
+                <div class="item">
+                  <%= image_tag 'spafinder.png' %>
+                  <div class="carousel-caption">
+                    Spa Credits
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="col-md-5 leftText sideText pull-left">
-            <br><br>
-            <h1>Flexible</h1>
-            <p>Let employees pick the perks that they want, keeping them happy and saving you valuable time.</p>
-          </div>
-        </div>
-        <hr><br>
-        <div class="row">
-          <div class="col-md-7 pull-left">
-            <%= image_tag "landing3.png" %>
-          </div>
-          <div class="col-md-5 leftText sideText pull-right">
-            <br>
-			<h1>Scalable</h1>
-            <p>Perky scales with your business, allowing you to customize how much you spend each month.</p>
+	        <h1>Flexible</h1>
+            <p>Your employees pick the perks they want from a catalog of curated lifestyle enhancing services:</p>
           </div>
         </div>
         <hr>
         <br>
-        <div class="row">
+        <div class="row" name="myAnchor" id="myAnchor">
           <div class="col-md-6 sideText">
             <br><br>
             <h1>Interested?</h1>
@@ -78,5 +126,15 @@
       </div>
     </div>
     <%= render 'layouts/footer' %>
+    <script type="text/javascript">
+	    $( document ).ready(function() {
+	    	$('a').click(function(){
+	    	    $('html, body').animate({
+	    	        scrollTop: $( $(this).attr('href') ).offset().top
+	    	    }, 500);
+	    	    return false;
+	    	});
+	    });
+	</script>
   </body>
 </html>

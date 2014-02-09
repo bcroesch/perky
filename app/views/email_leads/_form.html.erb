@@ -1,0 +1,50 @@
+<div id="notify-email-info">
+  <form id="email-intake-form" method="post" action="/email_leads">
+    <div class="form-group">
+      <label for="email_leads_email">Email address</label>
+      <input type="email" class="form-control" id="email_leads_email" placeholder="Email">
+    </div>
+    <div class="form-group">
+      <label for="email_leads_company_name">Company Name</label>
+      <input type="text" class="form-control" id="email_leads_company_name" placeholder="Company Name">
+    </div>
+    <div class="form-group">
+      <label for="email_leads_company_size">Company Size</label>
+      <input type="text" class="form-control" id="email_leads_company_size" placeholder="Number of Employees">
+    </div>
+    <button id="notify-button" type="submit" class="btn btn-default">Notify Me</button>
+  </form>
+</div>
+<div id="thank-you-for-email">
+  Thanks for this
+</div>
+
+<script type="text/javascript">
+  $("#thank-you-for-email").hide();
+  $("#email-intake-form").submit(function(e) {
+    e.preventDefault();
+    var data = {};
+    data['email_leads_email'] = $("#email_leads_email").val();
+    data['email_leads_company_name'] = $("#email_leads_company_name").val();
+    data['email_leads_company_size'] = $("#email_leads_company_size").val();
+    var url = "/email_leads";
+    $.ajax({
+      type: "POST",
+      beforeSend: function(xhr) {
+        var token = $('meta[name="csrf-token"]').attr('content');
+        if (token) xhr.setRequestHeader('X-CSRF-Token', token);
+      },
+      url: url,
+      data: data,
+      success: function() {
+        $("#email_leads_email").val('');
+        $("#email_leads_company_names").val('');
+        $("#email_leads_company_size").val('');
+        $("#notify-email-info").hide();
+        $("#thank-you-for-email").fadeIn('slow');
+      }
+    });
+
+  });
+
+</script>

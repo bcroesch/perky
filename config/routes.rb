@@ -11,8 +11,14 @@ Perky::Application.routes.draw do
     patch '/user/welcome' => 'users#set_initial_password', as: 'user_welcome'
   end
 
-
-  root :to => "perks#index"
   devise_for :users, :controllers => {:registrations => "registrations"}
+
+  unauthenticated do
+    root to: 'home#index'
+  end
+
+  authenticated :user do
+    root :to => "perks#index", as: :authenticated_root
+  end
 
 end

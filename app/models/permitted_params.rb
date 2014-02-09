@@ -9,7 +9,7 @@ class PermittedParams < Struct.new(:params, :user)
   end
 
   def user_attributes
-    [:email, :first_name, :last_name, :password, :password_confirmation, account_attributes: [:name, :stripe_card_token]]
+    [:email, :first_name, :last_name, :monthly_credits, :password, :password_confirmation, account_attributes: [:name, :stripe_card_token]]
   end
 
   def account_attributes

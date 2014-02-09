@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   skip_before_filter :authenticate_user!, only: [:welcome, :set_initial_password]
   before_action :set_account
 
+  respond_to :json, only: [:update, :destroy]
+
   def index
     if current_user.admin
       @users = current_user.account.users
@@ -26,11 +28,9 @@ class UsersController < ApplicationController
   def update
     @user = @account.users.find(params[:id])
     if @user.update(permitted_params.user)
-      flash[:notice] = 'User updated successfully'
-      redirect_to [@account, @user]
+      render json: {request: 'success'}
     else
-      flash[:alert] = 'Error with user creation'
-      render action: 'edit'
+      render json: {request: 'failed'}
     end
   end
 
@@ -47,6 +47,12 @@ class UsersController < ApplicationController
       flash[:alert] = 'Error with creation'
       render action: 'new'
     end
+  end
+
+  def destroy
+    @user.destroy
+
+    render json: {request: 'success'}
   end
 
   def set_initial_password

@@ -17,9 +17,9 @@
 #  updated_at             :datetime
 #  superuser              :boolean
 #  admin                  :boolean
-#  monthly_credits        :integer
+#  monthly_credits        :integer          default(0)
 #  account_id             :integer
-#  adhoc_credits          :integer
+#  adhoc_credits          :integer          default(0)
 #  first_name             :string(255)
 #  last_name              :string(255)
 #

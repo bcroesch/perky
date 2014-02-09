@@ -1,19 +1,19 @@
 <%= render 'layouts/hero' %>
 <div class="row box pad centerText">
-
 <h2>$<%= @account.total_monthly_allocation %> granted to <%= @account.users.count %> employees</h2>
 <!-- <h3>Employees have allocated $<%= @account.monthly_spend %></h3> -->
-
 </div>
-<div ng-controller="UsersTableCtrl" class="row box">
+<div ng-controller="UsersCtrl" class="row box">
   <div id="table-data" data-account-id="<%= @account.id %>"></div>
   <table class="table table-striped">
     <thead>
       <tr>
         <th>Name</th>
         <th>Email</th>
+        <th>Monthly Spend</th>
         <th>Monthly Credits</th>
-        <th>Edit</th>
+        <th></th>
+        <th></th>
       </tr>
     </thead>
     <tbody>

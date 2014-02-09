@@ -7,7 +7,7 @@
 
 <div class="row">
 	<% @perks.each do |perk| %>
-	  <div class="col-md-4">
+	  <div class="col-md-4 perk-col">
 	  	<a href="#" ng-click="selectPerk(<%= perk.id %>, <%= perk.credits %>)" data-no-turbolink>
 		  	<div class="perk" ng-class="isSelected(<%= perk.id %>)">
 		  		<strong><%= perk.name %></strong>

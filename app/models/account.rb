@@ -31,12 +31,15 @@ class Account < ActiveRecord::Base
     logger.warn e
   end
 
+  def monthly_spend
+    #@monthly_spend ||= users.map(&:monthly_credits).compact.reduce(0){|sum, val| sum += (val * CREDIT_PRICE) }
+  end
+
   def process_monthly_stripe_charge
-    charge_amount = users.map(&:monthly_credits).compact.reduce(0){|sum, val| sum += (val * CREDIT_PRICE) }
-    return if charge_amount == 0
+    return if monthly_spend == 0
 
     Stripe::Charge.create(
-      amount: charge_amount * 100,
+      amount: monthly_spend * 100,
       currency: "usd",
       customer: stripe_customer_token
     )

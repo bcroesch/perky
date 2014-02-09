@@ -1,6 +1,8 @@
 <%= render 'layouts/hero' %>
 <div class="row box pad centerText">
-  <h2>$2000 Granted to 48 Employees</h2>
+
+<h2><%= @account.monthly_spend %> granted to <%= @account.users.count %> employees</h2>
+
 </div>
 <div ng-controller="UsersTableCtrl" class="row box">
   <div id="table-data" data-account-id="<%= @account.id %>"></div>
@@ -14,8 +16,8 @@
       </tr>
     </thead>
     <tbody>
-    <%= render 'users_table' %>
-    <%= render 'users_table_angular' %>
+      <%= render 'users_table' %>
+      <%= render 'users_table_angular' %>
     </tbody>
 </table>
 </div>

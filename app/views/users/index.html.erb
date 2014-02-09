@@ -1,19 +1,25 @@
 <h3>Employees</h3>
 <div class="users">
-  <div class="row">
-    <div class="col-md-3">Name</div>
-    <div class="col-md-3">Email</div>
-    <div class="col-md-3">Monthly Credits</div>
-    <div class="col-md-3">&nbsp;</div>
-  </div>
-  <% @users.each do |user| %>
-    <div class="row">
-      <div class="col-md-3"><%= user.name %></div>
-      <div class="col-md-3"><%= user.email %></div>
-      <div class="col-md-3"><%= user.monthly_credits %></div>
-      <div class="col-md-3"><%= link_to "Edit", edit_account_user_url(@account, user) %></div>
-    </div>
-  <% end %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Monthly Credits</th>
+        <th>Edit</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+          <td><%= user.email %></td>
+          <td><%= user.monthly_credits %></td>
+          <td><%= link_to "Edit", edit_account_user_url(@account, user) %></td>
+      </tr>
+      <% end %>
+    </tbody>
+</table>
 </div>
 
 <div>

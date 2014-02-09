@@ -34,7 +34,7 @@ class Account < ActiveRecord::Base
   def process_monthly_stripe_charge
     charge_amount = users.map(&:monthly_credits).compact.reduce(0){|sum, val| sum += (val * CREDIT_PRICE) }
     return if charge_amount == 0
-    
+
     Stripe::Charge.create(
       amount: charge_amount * 100,
       currency: "usd",

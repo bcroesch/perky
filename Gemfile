@@ -14,6 +14,9 @@ gem 'devise'
 gem 'pg'
 gem 'thin'
 gem 'dotenv-rails'
+gem 'carrierwave'
+gem 'fog'
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]

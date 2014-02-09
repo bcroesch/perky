@@ -9,6 +9,8 @@ Perky::Application.routes.draw do
 
   resources :email_leads, only: [:create]
 
+  resources :users
+  
   resources :accounts do
     resources :users
     get '/user/welcome/:token' => 'users#welcome', as: 'new_user_welcome'

@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   skip_before_filter :authenticate_user!, only: [:welcome, :set_initial_password]
-  before_action :set_account
+  before_action :set_account, except: [:update]
+  before_action :set_user, only: [:update]
 
   respond_to :json, only: [:update, :destroy]
 
@@ -26,7 +27,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = @account.users.find(params[:id])
+    logger.info params
     if @user.update(permitted_params.user)
       render json: {request: 'success'}
     else
@@ -73,6 +74,10 @@ class UsersController < ApplicationController
 
   def set_account
     @account = Account.find(params[:account_id])
+  end
+
+  def set_user
+    @user = User.find(params[:id])
   end
 
 end

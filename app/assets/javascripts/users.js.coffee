@@ -27,6 +27,8 @@ app.factory "DeleteUser", [
   "UpdateCredits"
   "DeleteUser"
   ($scope, UpdateCredits, DeleteUser) ->
+    $scope.credit_price = jQuery('#credit_price').data('credit-price')
+    
     $scope.edit_user = (user_id) ->
       jQuery('#user_' + user_id + '_edit').hide()
       jQuery('#user_' + user_id + '_monthly_spend_span').hide()
@@ -34,21 +36,25 @@ app.factory "DeleteUser", [
       jQuery('#user_' + user_id + '_monthly_spend_input').show()
 
     $scope.update_user = (user_id) ->
-      # monthly_credits = jQuery('')
+      monthly_spend = parseInt jQuery('#user_' + user_id + '_monthly_spend_input').val()
+      monthly_credits = $scope.credit_price * monthly_spend
 
-      # UpdateCredits.query
-      #   id: user_id
-      #   monthly_credits: monthly_credits
-      # , (res) ->
-        # if res['request'] is 'success'
+      UpdateCredits.query
+        id: user_id
+        monthly_credits: monthly_credits
+      , (res) ->
+        if res['request'] is 'success'
+          jQuery('#user_' + user_id + '_spend').html(String('$' + monthly_spend))
+          jQuery('#user_' + user_id + '_credits').html(String(monthly_credits))
+
           jQuery('#user_' + user_id + '_update').hide()
-          jQuery('#user_' + user_id + '_monthly_credits_input').hide()
+          jQuery('#user_' + user_id + '_monthly_spend_input').hide()
           jQuery('#user_' + user_id + '_edit').show()
-          jQuery('#user_' + user_id + '_monthly_credits_span').show()
-      #   else
-      #     alert "We were unable to update this user."
-      # , () ->
-      #   alert "We encountered an error while trying to update this user."
+          jQuery('#user_' + user_id + '_monthly_spend_span').show()
+        else
+          alert "We were unable to update this user."
+      , () ->
+        alert "We encountered an error while trying to update this user."
 
     $scope.delete_user = (user_id) ->
       DeleteUser.query

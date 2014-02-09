@@ -5,6 +5,7 @@ class PerksController < ApplicationController
 
   # GET /perks
   def index
+    @current_user = User.first
     @perks = Perk.all 
     @prior_selections = current_user.perk_selections.to_json
   end

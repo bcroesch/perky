@@ -1,15 +1,42 @@
 // import the CSS framework
 @import "bootstrap";
+@import url("http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,700");
+@import "variables.css.scss";
 
 // make all images responsive by default
 img {
   @extend .img-responsive;
   margin: 0 auto;
   }
+
+.navbar{
+	padding-top: 5px;
+	height: $navHeight;
+}
+
+.navbar-inverse {
+  background-color: $navColor;
+  border: none;
+}  
 // override for the 'Home' navigation link
 .navbar-brand {
-  font-size: inherit;
+  padding: 7px;
+  padding-left: 14px;
+}
+
+.navbar-inverse {
+  .navbar-nav {
+    > li {
+      > a {
+        color: #fff;
+      }
+    }
   }
+}
+
+.alert{
+	margin-top: $navHeight;
+}
 
 // THESE ARE EXAMPLES YOU CAN MODIFY
 // create your own classes
@@ -18,6 +45,11 @@ img {
   @extend .col-md-6;
   @extend .text-center;
   }
+.authform form{
+  background-color: white;
+  border: none;
+  box-shadow: 0px 0px 0px white;
+}
 .form {
   @extend .col-md-6;
   }
@@ -25,19 +57,35 @@ img {
   @extend .col-md-6;
   @extend .text-center;
   }
-.submit {
+  .form-control {
+   -webkit-box-shadow: 0 0 0 white;
+   box-shadow: 0 0 0 white;
+   background-color: rgba(0,0,0,0.1);
+   border-color: white;
+   color: black;
+  }
+  .form-control:focus {
+   -webkit-box-shadow: 0 0 0 white;
+   box-shadow: 0 0 0 white;
+   border-color: $linkColor;
+  }
+.submit, .button, .authform .button{
   @extend .btn;
   @extend .btn-primary;
   @extend .btn-lg;
+  border: none;
+  background-color: $linkColor;
+  }
+.submit:hover, .button:hover, .authform .button:hover{
+  background-color: $linkHoverColor;
   }
 // apply styles to HTML elements
 // to make views framework-neutral
 main {
-  @extend .container;
-  background-color: #eee;
+  background: none;
   padding-bottom: 80px;
   width: 100%;
-  margin-top: 51px; // accommodate the navbar
+  margin-top: $navHeight; // accommodate the navbar
   }
 section {
   @extend .row;
@@ -55,7 +103,13 @@ section {
 .authform form {
   @extend .well;
   @extend .well-lg;
-  padding-bottom: 40px;
+  padding-bottom: 60px;
+}
+.authform h3{
+	padding-top: 0px;
+	margin-top: 0px;
+	padding-bottom: 10px;
+	text-align: center;
 }
 .authform .right {
   float: right !important;
@@ -73,4 +127,21 @@ section {
 }
 #error_explanation h2 {
   font-size: 16px;
+}
+
+a {
+	color: $linkColor;
+}
+
+a:hover, a:focus {
+	color: $linkHoverColor;
+}
+
+body{
+	background-color: $bodyColor;
+}
+
+body *{
+  border-radius: 0px !important;
+  font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 }

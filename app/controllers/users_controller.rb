@@ -73,7 +73,7 @@ class UsersController < ApplicationController
   protected
 
   def set_account
-    @account = Account.find(params[:account_id])
+    @account = Account.find(params[:account_id]) unless params[:account_id].blank?
   end
 
   def set_user

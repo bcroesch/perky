@@ -8,8 +8,6 @@ Perky::Application.routes.draw do
   resources :perks
 
   resources :email_leads, only: [:create]
-
-  resources :users
   
   resources :accounts do
     resources :users
@@ -18,6 +16,8 @@ Perky::Application.routes.draw do
   end
 
   devise_for :users, :controllers => {:registrations => "registrations"}
+
+  resources :users, only: [:update, :destroy]
 
   unauthenticated do
     root to: 'home#index'

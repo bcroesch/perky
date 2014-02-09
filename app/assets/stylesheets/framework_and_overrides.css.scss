@@ -24,6 +24,15 @@ img {
   padding-left: 14px;
 }
 
+.box{
+	background-color: $boxBG;
+	margin-top: 20px;
+}
+
+.table{
+	margin-bottom: 0px;
+}
+
 .navbar-inverse {
   .navbar-nav {
     > li {
@@ -36,6 +45,35 @@ img {
 
 .alert{
 	margin-top: $navHeight;
+}
+
+.jumbotron{
+	padding: 40px;
+	background-color: $boxBG;
+	margin: 0px;
+	margin-top: 20px;
+	height: 200px;
+	position: relative;
+}
+
+.jumbotron *{
+	display: inline-block;
+}
+
+.heroLogo{
+	height: 100%;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center center;
+	margin: 0px;
+	min-width: 300px
+}
+
+.heroTitle{
+	height: 100%;
+	margin: 0px;
+	text-align: center;
+	line-height: 0;
 }
 
 // THESE ARE EXAMPLES YOU CAN MODIFY

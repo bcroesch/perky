@@ -21,17 +21,25 @@
 		background-color: $linkColor;
 		height: 100%;
 		white-space: nowrap;
-		padding-top: 2px;
-		padding-left: 10px;
 		box-sizing: border-box;
+		padding-top: 2px;
+		> span{
+			text-align: center;
+			margin-left: 10px;
+		}
 	}
 }
 
 .col-md-4 {
 	&.perk-col {
-		padding-left: 2px;
+		padding-left: 4px;
 		padding-right: 2px;
 	}
+}
+
+.perkCatalog{
+	margin-left: -4px;
+	margin-right: -4px;
 }
 
 .perkInfoName{
@@ -75,6 +83,7 @@
 	background-size: cover;
 	position: relative;
 	box-shadow: inset 0px -120px 100px -100px black;
+	border: 1px inset rgba(black,0.2);
 	
 	&:hover:before{
 		opacity: 1;

@@ -22,7 +22,6 @@ app.factory "CancelSelection", [
     )
 ]
 
-
 @PerksCtrl = [
   "$scope",
   "MakeSelection"
@@ -76,10 +75,12 @@ app.factory "CancelSelection", [
               alert "We were unable to make your perk selection."
           , () ->
             alert "We encountered an error while trying to select your perk."
+        else
+
 
       $scope.isSaving = false
 
-    $scope.isSelected = (perk_id) ->
+    $scope.isSelected = (perk_id, credits) ->
       found = false
       jQuery.each $scope.selected_perks, (k,v) ->
         if v['perk'] is perk_id
@@ -88,5 +89,8 @@ app.factory "CancelSelection", [
       if found is true
         return "selected"
       else
-        return ""
+        if $scope.remaining_credits >= credits
+          return ""
+        else
+          return "unaffordable"
 ]

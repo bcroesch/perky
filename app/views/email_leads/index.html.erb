@@ -1,0 +1,31 @@
+<h1>Listing email_leads</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Company name</th>
+      <th>Company size</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @email_leads.each do |email_lead| %>
+      <tr>
+        <td><%= email_lead.email %></td>
+        <td><%= email_lead.company_name %></td>
+        <td><%= email_lead.company_size %></td>
+        <td><%= link_to 'Show', email_lead %></td>
+        <td><%= link_to 'Edit', edit_email_lead_path(email_lead) %></td>
+        <td><%= link_to 'Destroy', email_lead, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Email lead', new_email_lead_path %>

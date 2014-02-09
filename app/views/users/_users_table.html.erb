@@ -1,0 +1,21 @@
+<% @users.each do |user| %>
+  <tr id="user_<%= user.id %>_row">
+    <td><%= user.name %></td>
+    <td><%= user.email %></td>
+    <td id="user_<%= user.id %>_spend">
+      <span id="user_<%= user.id %>_monthly_spend_span">
+        $<span id="user_<%= user.id %>_spend"><%= user.monthly_credits * 5 %></span>
+      </span>
+      <input type="text" id="user_<%= user.id %>_monthly_spend_input" placeholder="Monthly Spend (in $)" style="display: none" ng-model="user_<%= user.id %>_spend">
+    </td>
+    <td id="user_<%= user.id %>_credits"><%= user.monthly_credits %></td>
+    <td>
+      <a href="#" data-no-turbolink id="user_<%= user.id %>_edit" ng-click="edit_user(<%= user.id %>)">Edit</a>
+      <button class="btn btn-sm btn-warning" id="user_<%= user.id %>_update" ng-click="update_user(<%= user.id %>)" style="display: none">Update User</button>
+    </td>
+    <td>
+      <button class="btn btn-sm btn-danger" <% if current_user.id == user.id %>disabled ng-click="delete_user(<%= user.id %>)"<% end %>>Delete</button>
+    </td>
+  </tr>
+<% end %>
+

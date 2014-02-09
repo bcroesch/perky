@@ -2,17 +2,18 @@
 #
 # Table name: accounts
 #
-#  id                    :integer          not null, primary key
-#  name                  :string(255)
-#  stripe_customer_token :string(255)
-#  created_at            :datetime
-#  updated_at            :datetime
+#  id                      :integer          not null, primary key
+#  name                    :string(255)
+#  stripe_customer_token   :string(255)
+#  created_at              :datetime
+#  updated_at              :datetime
+#  default_monthly_credits :integer          default(0)
 #
 
 class Account < ActiveRecord::Base
   has_many :users
 
-  CREDIT_PRICE = 10
+  CREDIT_PRICE = 5
 
   after_create :generate_stripe_token
 
@@ -31,12 +32,19 @@ class Account < ActiveRecord::Base
     logger.warn e
   end
 
+  def total_monthly_allocation
+    @total_monthly_allocation ||= users.map(&:monthly_credits).compact.reduce(0){|sum, val| sum += (val * CREDIT_PRICE) }
+  end
+
+  def monthly_spend
+    @monthly_spend ||= users.map{|user| user.perks.map(&:credits) }.flatten.compact.reduce(0){|sum, val| sum += (val * CREDIT_PRICE) }
+  end
+
   def process_monthly_stripe_charge
-    charge_amount = users.map(&:monthly_credits).compact.reduce(0){|sum, val| sum += (val * CREDIT_PRICE) }
-    return if charge_amount == 0
+    return if monthly_spend == 0
 
     Stripe::Charge.create(
-      amount: charge_amount * 100,
+      amount: monthly_spend * 100,
       currency: "usd",
       customer: stripe_customer_token
     )

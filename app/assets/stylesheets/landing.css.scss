@@ -7,11 +7,36 @@
 	background-position: center center;
 	background-size: cover;
 	background-color: #86C351;
+	position: relative;
+	
+	.signupButton{
+		display: none;
+	}
 }
 
 .landHeader nav{
 	background-color: transparent !important;
 }
+
+.btn-landing, .btn-landing:focus{
+	position: absolute;
+	left: 50%;
+	bottom: 40px;
+	background: transparent;
+	border: 3px solid white;
+	color: white;
+	margin-left: -90px;
+	width: 180px;
+	text-align: center;
+	font-size: 18pt;
+	outline: none;
+	
+	&:hover{
+		background-color: rgba(white,0.5);
+		color: black;	
+	}
+}
+
 
 .landingContent{
 	background-color: white;

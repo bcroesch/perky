@@ -1,4 +1,4 @@
-<%= render 'layouts/hero' %>
+<%= render 'layouts/hero', hero_text: "Perks" %>
 <div ng-controller="PerksCtrl" class="tokenBar">
 <div id="user" data-user-id="<%= current_user.id %>"></div>
 <div id="prior_selections" data-prior-selections="<%= @prior_selections %>"></div>

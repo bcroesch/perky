@@ -7,9 +7,10 @@ You've been added to an account on Perky!
 </p>
 
 <p>
-That's great and all but we now need you to create a password so you can go and get awesome things!
+Now need you to create a password so you can go and get your awesome perks!
 </p>
+
 <p>
-Visit this <%= link_to 'this', account_new_user_welcome_url(@account, token: @user.reset_password_token) %>, set your password, and pick your perks.
+Visit <%= link_to 'this', account_new_user_welcome_url(@account, token: @user.reset_password_token) %> link, set your password, and then go and pick your perks.
 </p>
 

@@ -1,0 +1,14 @@
+@import "variables.css.scss";
+
+.landHeader{
+	height: 400px;;
+	width: 100%;
+	background-image: url('/assets/cover.png');
+	background-position: center center;
+	background-size: cover;
+	background-color: #86C351;
+}
+
+.landHeader nav{
+	background-color: transparent !important;
+}

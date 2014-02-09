@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) : "Perky" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Perky" %>">
+    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+
+    <% if params[:controller] == "registrations" || params[:controller] == "accounts" %>
+      <%= stripe_js_tag %>
+      <%= tag :meta, :name => "stripe-key", :content => ENV['STRIPE_PUBLIC_KEY'] %>
+    <% end %>
+
+    <%= csrf_meta_tags %>
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lte IE 8]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/json3/3.3.0/json3.min.js"></script>
+    <![endif]-->
+  </head>
+  <body class="<%= params[:controller].parameterize %>-controller <%=params[:action]%>-action" data-controller="<%=params[:controller].camelize%>" data-action="<%=params[:action].camelize%>" ng-app="Perky">
+    <header class="landHeader">
+      <%= render 'layouts/navigation' %>
+    </header>
+    <%= render 'layouts/messages' %>
+    <div class="container">
+    	<dev class="row centerText">
+    		<div class="jumbotron">
+	    		<h1>Perks!</h1>
+    		</div>
+    	</dev>
+    </div>
+    <%= render 'layouts/footer' %>
+  </body>
+</html>

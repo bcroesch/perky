@@ -19,5 +19,5 @@ $(document).on "page:change", -> # Turbolinks => the page has been parsed and ch
 
 
 $(document).on "page:load", -> # Turbolinks => is fired at the end of the loading process
-  angular.bootstrap document.body, ["Spark"]
+  angular.bootstrap document.body, ["Perky"]
   eval $("#supportHelper").text()

@@ -1,4 +1,4 @@
-<%= render 'layouts/hero' %>
+<%= render 'layouts/hero', hero_text: "Employees" %>
 <div class="row box pad centerText">
 <h2>$<%= @account.total_monthly_allocation %> granted to <%= @account.users.count %> employees</h2>
 <!-- <h3>Employees have allocated $<%= @account.monthly_spend %></h3> -->

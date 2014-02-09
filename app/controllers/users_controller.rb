@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   skip_before_filter :authenticate_user!, only: [:welcome, :set_initial_password]
-  before_action :set_account, except: [:update, :destroy]
+  before_action :set_account, except: [:update, :destroy, :invite]
   before_action :set_user, only: [:update, :destroy]
 
   respond_to :json, only: [:update, :destroy]
@@ -27,9 +27,9 @@ class UsersController < ApplicationController
   end
 
   def update
-    logger.info params
     if @user.update(permitted_params.user)
-      render json: {request: 'success'}
+      account_total = @user.account.total_monthly_allocation
+      render json: {request: 'success', account_total: account_total}
     else
       render json: {request: 'failed'}
     end
@@ -67,6 +67,10 @@ class UsersController < ApplicationController
 
   def welcome
     @user = @account.users.find_by_reset_password_token(params[:token])
+  end
+
+  def invite
+    # Create a new user and email them...
   end
 
   protected

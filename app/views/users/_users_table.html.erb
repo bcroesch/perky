@@ -2,7 +2,7 @@
   <tr id="user_<%= user.id %>_row">
     <td><%= user.name %></td>
     <td><%= user.email %></td>
-    <td id="user_<%= user.id %>_spend">
+    <td>
       <span id="user_<%= user.id %>_monthly_spend_span">
         $<span id="user_<%= user.id %>_spend"><% if !user.monthly_credits.nil? %><%= user.monthly_credits * Account::CREDIT_PRICE %><% else %>0<% end %></span>
       </span>

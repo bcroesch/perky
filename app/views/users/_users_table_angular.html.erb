@@ -1,15 +1,8 @@
-
-<tr>
-  <td>
-    <em>New Employee</em>
-  </td>
-  <td>
-    <input placeholder="Add Employee's Email">
-  </td>
-  <td>
-    <input placeholder="Monthly Credits" value="<%= @account.default_monthly_credits %>">
-  </td>
-  <td>
-    <button ng-click="hi()">Add</button>
-  </td>
+<tr id="template">
+  <td></td>
+  <td><input placeholder="Add Employee's Email"></td>
+  <td><input placeholder="Monthly Credits" value="<%= @account.default_monthly_credits * Account::CREDIT_PRICE %>"></td>
+  <td><%= @account.default_monthly_credits %></td>
+  <td></td>
+  <td><button ng-click="new_employee()" class="btn btn-sm btn-primary">Add Employee</button></td>
 </tr>

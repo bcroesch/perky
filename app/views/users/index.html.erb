@@ -1,12 +1,12 @@
 <%= render 'layouts/hero', hero_text: "Employees" %>
 <div class="row box pad centerText">
-  <h2>$<%= @account.total_monthly_allocation %> granted to <%= @account.users.count %> employees</h2>
+  <h2>$<span id="account_total"><%= @account.total_monthly_allocation %></span> granted to <%= @account.users.count %> employees</h2>
   <!-- <h3>Employees have allocated $<%= @account.monthly_spend %></h3> -->
 </div>
 <div id="credit_price" data-credit-price="<%= Account::CREDIT_PRICE %>"></div>
 <div ng-controller="UsersCtrl" class="row box">
   <div id="table-data" data-account-id="<%= @account.id %>"></div>
-  <table class="table table-striped">
+  <table class="table table-striped" id="employees_table">
     <thead>
       <tr>
         <th>Name</th>
@@ -24,6 +24,8 @@
 </table>
 </div>
 
-<div>
-  <%= link_to 'Add new user', new_account_user_path %>
-</div>
+<% if false %>
+  <div>
+    <%= link_to 'Add new user', new_account_user_path %>
+  </div>
+<% end %>

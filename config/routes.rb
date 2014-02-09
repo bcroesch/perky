@@ -18,6 +18,7 @@ Perky::Application.routes.draw do
   devise_for :users, :controllers => {:registrations => "registrations"}
 
   resources :users, only: [:update, :destroy]
+  match '/user/invite' => 'users#invite', via: [:post]
 
   unauthenticated do
     root to: 'home#index'
